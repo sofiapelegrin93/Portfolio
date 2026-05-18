@@ -1,6 +1,4 @@
-/* ==========================================================================
-   1. CONFIGURACIÓN GENERAL Y VARIABLES
-   ========================================================================== */
+/*------- 1. CONFIGURACIÓN PRINCIPAL ---------*/
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +7,6 @@
     scroll-behavior: smooth;
 }
 
-/* Evita la franja gris lateral de desbordamiento en todos los dispositivos */
 html, body {
     max-width: 100%;
     overflow-x: hidden;
@@ -19,7 +16,7 @@ html, body {
 
 body {
     color: #ffffff;
-    padding-top: 55px; /* Altura de la navbar para que no tape contenido */
+    padding-top: 55px;
 }
 
 .container {
@@ -38,7 +35,6 @@ body {
 }
 
 h2 {
-    font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 2.5rem;
     letter-spacing: 2px;
@@ -46,9 +42,7 @@ h2 {
     margin-bottom: 3rem;
 }
 
-/* ==========================================================================
-   2. BARRA DE NAVEGACIÓN 
-   ========================================================================== */
+/*------- 2. MENÚ ---------*/
 header {
     background-color: #333333;
     position: fixed;
@@ -109,9 +103,7 @@ header {
             text-shadow: 0.5px 0 0 #D1263E, -0.5px 0 0 #D1263E, 0 0 1px #D1263E;
         }
 
-/* ==========================================================================
-   3. PORTADA 
-   ========================================================================== */
+/*------- 3. PORTADA ---------*/
 .hero-section {
     width: 100%;
     height: calc(100vh - 55px);
@@ -130,9 +122,7 @@ header {
     display: block;
 }
 
-/* ==========================================================================
-   4. SOBRE MÍ
-   ========================================================================== */
+/*------- 4. SOBRE MÍ ---------*/
 .about-section {
     width: 100%;
     position: relative;
@@ -210,9 +200,7 @@ header {
         object-fit: cover;
     }
 
-/* ==========================================================================
-   5. SECCIÓN PORTFOLIO Y POP-UPS 
-   ========================================================================== */
+/*------- 5. PORTFOLIO Y POPUPS ---------*/
 .portfolio-section {
     background-color: #ffffff;
     padding: 4rem 0 0 0;
@@ -269,14 +257,13 @@ a.portfolio-item-full {
     transform: scale(1.05);
 }
 
-/* ESTILOS DE LOS POP-UPS GENERALES */
 .project-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 99999; /* Prioridad máxima por encima de la barra de navegación */
+    z-index: 99999;
     display: none;
     justify-content: center;
     align-items: center;
@@ -290,47 +277,74 @@ a.portfolio-item-full {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9); /* Fondo negro translúcido */
-    z-index: 10;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1;
 }
 
 .modal-content {
     position: relative;
-    background: #262626; /* Fondo gris oscuro de tu tarjeta */
+    background: #1a1a1a;
     color: #ffffff;
-    width: 90%;
-    max-width: 800px;
-    padding: 2.5rem 2rem 2rem 2rem;
-    border-radius: 12px;
-    max-height: 90vh;
-    overflow-y: auto;
-    z-index: 20; /* Flota de manera forzada sobre el fondo oscuro */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    width: 92vw !important;
+    height: 88vh !important;
+    max-width: 1280px !important;
+    max-height: 850px !important;
+    padding: 25px 25px 20px 25px !important;
+    border-radius: 12px !important;
+    overflow-y: auto !important;
+    z-index: 2;
+    box-sizing: border-box !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
 }
+
+    .modal-content h2 {
+        font-size: 1.4rem !important;
+        text-align: center !important;
+        margin-bottom: 2rem !important;
+        letter-spacing: 1px !important;
+    }
+
+    .modal-content p[style*="color:#aaa"] {
+        text-align: center !important;
+        margin-top: -0.5rem !important;
+        margin-bottom: 0.8rem !important;
+    }
 
 .close-modal {
     position: absolute;
     top: 15px;
     right: 20px;
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: #ffffff;
     text-decoration: none;
-    z-index: 30; /* El botón de cerrar siempre accesible arriba */
-    transition: color 0.3s;
+    z-index: 9999;
+    transition: color 0.3s, transform 0.2s;
 }
 
     .close-modal:hover {
         color: #D1263E;
+        transform: scale(1.1);
     }
 
-/* CONTENEDOR RESPONSIVO ESPECIAL PARA EL VÍDEO DE YOUTUBE */
+.modal-project-img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 950px !important;
+    object-fit: contain !important;
+    border-radius: 6px;
+    margin: 10px auto !important;
+    display: block;
+}
+
 .video-responsive {
     position: relative;
-    padding-bottom: 56.25%; /* Relación de aspecto 16:9 de YouTube */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
-    margin-top: 1.5rem;
-    border-radius: 6px;
+    margin: 10px auto !important;
+    width: 100% !important;
+    max-width: 950px !important;
+    border-radius: 8px;
     z-index: 25;
 }
 
@@ -344,61 +358,16 @@ a.portfolio-item-full {
         z-index: 26;
     }
 
-/* ESTILOS DE LOS POP-UPS (RESTAURADOS) */
-.project-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    display: none;
-    justify-content: center;
-    align-items: center;
+.modal-content p {
+    font-weight: 300;
+    line-height: 1.6;
+    margin: 15px auto 0 auto !important;
+    width: 100% !important;
+    max-width: 950px !important;
+    text-align: justify;
 }
 
-    .project-modal:target {
-        display: flex;
-    }
-
-.modal-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.85); /* Un pelín transparente para ver que hay fondo */
-    z-index: 1; /* Capa trasera */
-}
-
-.modal-content {
-    position: relative;
-    background: #262626; /* Tu gris oscuro de fondo */
-    color: #ffffff;
-    width: 90%;
-    max-width: 800px;
-    padding: 2rem;
-    border-radius: 12px;
-    max-height: 90vh;
-    overflow-y: auto;
-    z-index: 2; /* ¡CLAVE! Se posiciona por encima del fondo negro */
-}
-
-.close-modal {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 2rem;
-    color: #ffffff;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-    .close-modal:hover {
-        color: #D1263E;
-    }
-
-/* ==========================================================================
-   6. CONOCIMIENTOS, CONTACTO Y BOTÓN HOVER
-   ========================================================================== */
+/*------- 6. CONOCIMIENTO Y CONTACTO ---------*/
 .skills-section {
     padding: 6rem 0;
     background-color: #1a1a1a;
@@ -436,7 +405,6 @@ a.portfolio-item-full {
     filter: grayscale(0%);
 }
 
-/* SECCIÓN CONTACTO Y BOTÓN */
 .contact-section {
     padding: 100px 0;
     background: url('img/FondoContacto.png') center/cover no-repeat fixed;
@@ -467,15 +435,12 @@ a.portfolio-item-full {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-    /* RESTAURADO: Hover del botón de contacto */
     .btn-submit:hover {
-        background-color: #b01e32; /* Tono de rojo un poco más oscuro al pasar el ratón */
+        background-color: #b01e32;
         transform: translateY(-2px);
     }
 
-/* ==========================================================================
-   7. FOOTER (LADO A LADO EN PC)
-   ========================================================================== */
+/*------- 7. FOOTER ---------*/
 footer {
     background-color: #D1263E;
     padding: 10px 0;
@@ -510,37 +475,25 @@ footer {
         transition: color 0.3s ease, transform 0.3s ease;
     }
 
-        .footer-socials a img {
-            height: 26px;
-            width: auto;
-            filter: brightness(0) invert(1);
-            transition: filter 0.3s ease;
-        }
-
         .footer-socials a:hover {
             color: #333333 !important;
             transform: translateY(-3px);
         }
 
-            .footer-socials a:hover img {
-                filter: brightness(0) invert(0.2);
-            }
-
-/* ==========================================================================
-   8. RESPONSIVE DESIGN (MEDIA QUERIES)
-   ========================================================================== */
-
-/* Tablets (Menos de 1024px) */
+/*------- 8. RESPONSIVE ---------*/
 @media (max-width: 1024px) {
     .portfolio-grid-full {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .modal-content {
+        width: 94vw !important;
+        height: 92vh !important;
+        padding: 25px !important;
+    }
 }
 
-/* Móviles Estándar (Menos de 768px) */
 @media (max-width: 768px) {
-
-    /* Navbar móvil */
     .nav-links {
         display: none;
     }
@@ -551,36 +504,22 @@ footer {
         height: 55px;
     }
 
-    .nav-brand {
-        height: 55px;
-    }
-
-    .nav-brand-img {
-        height: 100% !important;
-        width: auto !important;
-    }
-
-    /* Portada móvil */
     .hero-section {
         height: 70vh;
     }
 
-    /* Sobre Mí móvil: Apilado vertical pero TEXTOS A LA IZQUIERDA */
     .about-container {
         flex-direction: column;
         align-items: flex-start;
         text-align: left;
         padding: 0 5%;
         width: 100%;
+        gap: 4rem;
     }
 
     .about-text h2 {
         text-align: left;
         margin-bottom: 2rem;
-    }
-
-    .about-text p {
-        text-align: left;
     }
 
     .about-image-wrapper {
@@ -606,12 +545,6 @@ footer {
         margin-bottom: 2rem;
     }
 
-    .about-interests-img {
-        height: auto !important;
-        max-width: 100%;
-    }
-
-    /* Portfolio móvil */
     .portfolio-grid-full {
         grid-template-columns: 1fr;
     }
@@ -620,22 +553,49 @@ footer {
         height: 300px;
     }
 
-    /* Conocimientos móvil */
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
     }
 
-    /* Footer móvil */
     .footer-container {
         flex-direction: column-reverse;
         justify-content: center;
         text-align: center;
         gap: 20px;
     }
+
+    .modal-content {
+        width: 96vw !important;
+        height: 94vh !important;
+        max-height: 94vh !important;
+        padding: 45px 15px 15px 15px !important;
+        border-radius: 8px !important;
+    }
+
+    .modal-project-img {
+        max-width: 100% !important;
+        max-height: 350px !important;
+        margin: 8px auto !important;
+    }
+
+    .close-modal {
+        top: 8px;
+        right: 12px;
+        font-size: 2.2rem;
+    }
+
+    .video-responsive {
+        margin: 8px auto !important;
+        max-width: 100% !important;
+    }
+
+    .modal-content p {
+        max-width: 100% !important;
+        text-align: left;
+    }
 }
 
-/* Móviles muy pequeños (Menos de 480px) */
 @media (max-width: 480px) {
     h2 {
         font-size: 1.8rem;
@@ -646,7 +606,14 @@ footer {
     }
 
     .modal-content {
-        padding: 1rem;
-        width: 95%;
+        width: 100vw !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        border-radius: 0 !important;
+        padding: 50px 12px 15px 12px !important;
+    }
+
+    .modal-project-img {
+        max-height: 260px !important;
     }
 }
