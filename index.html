@@ -45,7 +45,7 @@
             <div class="about-image-wrapper">
                 <img src="img/SPFondoSobreMi.png" alt="Logo de fondo" class="about-bg-logo">
                 <div class="profile-circle">
-                    <img src="img/yo.jpeg" alt="Sofía Pelegrín">
+                    <img src="img/SofiaPelegrin.jpeg" alt="Sofía Pelegrín">
                 </div>
             </div>
         </div>
@@ -64,7 +64,6 @@
                     <div class="portfolio-text-full">
                         <h3>PUERTO DE CARTAGENA | MARQ</h3>
                         <p>DISEÑO UI/UX</p>
-                        <span>2021</span>
                     </div>
                 </div>
             </a>
@@ -75,7 +74,6 @@
                     <div class="portfolio-text-full">
                         <h3>PROYECT SPACE</h3>
                         <p>VIDEOGAME DEVELOPMENT</p>
-                        <span>2023</span>
                     </div>
                 </div>
             </a>
@@ -86,7 +84,6 @@
                     <div class="portfolio-text-full">
                         <h3>PLATYFROG</h3>
                         <p>VIDEO GAME DEVELOPMENT</p>
-                        <span>2024</span>
                     </div>
                 </div>
             </a>
@@ -97,7 +94,6 @@
                     <div class="portfolio-text-full">
                         <h3>BRANDING</h3>
                         <p>EMPRESAS</p>
-                        <span>2022</span>
                     </div>
                 </div>
             </a>
@@ -108,7 +104,6 @@
                     <div class="portfolio-text-full">
                         <h3>REDISEÑOS</h3>
                         <p>VELARTE</p>
-                        <span>2021</span>
                     </div>
                 </div>
             </a>
@@ -119,7 +114,6 @@
                     <div class="portfolio-text-full">
                         <h3>MAQUETACIÓN</h3>
                         <p>DÍGRAFO</p>
-                        <span>2021</span>
                     </div>
                 </div>
             </a>
@@ -130,7 +124,6 @@
                     <div class="portfolio-text-full">
                         <h3>MOTION GRAPHICS</h3>
                         <p>OVERLAY TWITCH</p>
-                        <span>2022</span>
                     </div>
                 </div>
             </a>
@@ -141,7 +134,6 @@
                     <div class="portfolio-text-full">
                         <h3>WEB DESIGN</h3>
                         <p>PORTFOLIO</p>
-                        <span>2026</span>
                     </div>
                 </div>
             </a>
@@ -330,6 +322,21 @@
             <p>Diseño y desarrollo integral de este sitio web, concebido como el escaparate digital principal para proyectar mi identidad profesional en las áreas del diseño gráfico, UI/UX, maquetación y desarrollo de videojuegos. El proceso abarcó desde la conceptualización de la marca personal y la arquitectura de la información, hasta el diseño visual de la interfaz (UI) buscando una estética contemporánea, limpia y de alto impacto visual (donde destaca el juego cromático corporativo). El desarrollo técnico se ejecutó utilizando código limpio y semántico en HTML5 y CSS3 nativo, implementando maquetación avanzada mediante Flexbox y CSS Grid para garantizar una experiencia de usuario (UX) fluida, tiempos de carga mínimos y un diseño totalmente responsivo y adaptado a dispositivos móviles.</p>
         </div>
     </div>
+
+    <script>
+        window.addEventListener('hashchange', function () {
+            const currentHash = window.location.hash;
+
+            if (!currentHash.includes('#modal')) {
+                const iframes = document.querySelectorAll('.video-responsive iframe');
+
+                iframes.forEach(iframe => {
+                    const clone = iframe.cloneNode(true);
+                    iframe.parentNode.replaceChild(clone, iframe);
+                });
+            }
+        });
+    </script>
 
 </body>
 </html>
