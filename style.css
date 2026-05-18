@@ -1,0 +1,653 @@
+/* ==========================================================================
+   1. CONFIGURACIÓN GENERAL Y VARIABLES
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #333333; 
+    color: #ffffff;
+    overflow-x: hidden;
+    padding-top: 55px; 
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.red-letter {
+    color: #D1263E;
+}
+
+.red-text {
+    color: #D1263E;
+    font-weight: bold;
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* ==========================================================================
+   2. BARRA DE NAVEGACIÓN
+   ========================================================================== */
+header {
+    background-color: #333333;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    border-bottom: 2px solid #D1263E;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 55px;
+    height: 55px;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-brand-img {
+    height: 100%;
+    width: auto;
+    display: block;
+    object-fit: fill;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+    .nav-links a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 0.85rem;
+        letter-spacing: 1.5px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 300;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.3s ease;
+    }
+
+        .nav-links a::after {
+            content: attr(title);
+            font-weight: 500;
+            height: 0;
+            visibility: hidden;
+            overflow: hidden;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .nav-links a:hover {
+            color: #D1263E;
+            font-weight: 500;
+        }
+
+/* ==========================================================================
+   3. PORTADA
+   ========================================================================== */
+.hero-section {
+    width: 100%;
+    height: auto;
+    min-height: calc(100vh - 55px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333333;
+    position: relative;
+}
+
+.hero-graphic {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* ==========================================================================
+   4. SOBRE MÍ
+   ========================================================================== */
+.about-section {
+    width: 100%;
+    position: relative;
+    clear: both;
+    padding: 5rem 0 2rem 0;
+    background-color: #333333;
+}
+
+    .about-section p {
+        font-weight: 300;
+        line-height: 1.6;
+    }
+
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+}
+
+.about-text {
+    flex: 1;
+}
+
+    .about-text h2 {
+        text-align: left;
+        margin-bottom: 4rem;
+        font-weight: 700;
+    }
+
+.interest-png-container {
+    margin-top: 4rem;
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.about-interests-img {
+    height: 60px !important;
+    max-height: 60px !important;
+    width: auto !important;
+    display: block;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+}
+
+    .about-interests-img:hover {
+        opacity: 0.85;
+    }
+
+.about-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 400px;
+}
+
+.about-bg-logo {
+    position: absolute;
+    width: 380px;
+    height: auto;
+    opacity: 0.15;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.profile-circle {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    border: 5px solid #D1263E;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+    .profile-circle img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+/* ==========================================================================
+   5. SECCIÓN PORTFOLIO
+   ========================================================================== */
+.portfolio-section {
+    background-color: #ffffff;
+    width: 100%;
+    padding: 4rem 0 0 0;
+}
+
+.portfolio-title-container {
+    max-width: 1200px;
+    margin: 0 auto 2rem auto;
+    padding: 0 2rem;
+}
+
+    .portfolio-title-container h2 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 2.5rem;
+        color: #000000;
+        letter-spacing: 1px;
+        text-align: left;
+    }
+
+.portfolio-grid-full {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    width: 100%;
+}
+
+a.portfolio-item-full {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+}
+
+.portfolio-img-full {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.portfolio-overlay-full {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.portfolio-text-full {
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+}
+
+    .portfolio-text-full h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin: 0 0 0.3rem 0;
+        letter-spacing: 0.5px;
+    }
+
+    .portfolio-text-full p {
+        font-size: 0.95rem;
+        font-weight: 300;
+        margin: 0 0 0.2rem 0;
+        color: #e0e0e0;
+    }
+
+    .portfolio-text-full span {
+        font-size: 0.8rem;
+        font-weight: 300;
+        color: #aaaaaa;
+    }
+
+.btn-view-project {
+    display: inline-block;
+    background-color: #D1263E;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 0.4rem 1.8rem;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
+
+    .btn-view-project:hover {
+        background-color: #b01e32;
+    }
+
+.portfolio-item-full:hover .portfolio-img-full {
+    transform: scale(1.05);
+}
+
+/* ==========================================================================
+   6. CONOCIMIENTOS
+   ========================================================================== */
+.skills-section {
+    padding: 6rem 0;
+    background-color: #1a1a1a;
+    width: 100%;
+}
+
+    .skills-section h2 {
+        text-align: left;
+        margin-bottom: 4rem;
+    }
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2.5rem;
+}
+
+.skill-card {
+    background-color: #262626;
+    padding: 2rem 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.skill-img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(0.9);
+    transition: filter 0.3s ease;
+}
+
+.skill-card p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #cccccc;
+    letter-spacing: 1px;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-8px);
+    background-color: #2d2d2d;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+    .skill-card:hover .skill-img {
+        filter: grayscale(0%) brightness(1);
+    }
+
+    .skill-card:hover p {
+        color: #ffffff;
+    }
+
+/* ==========================================================================
+   7. CONTACTO
+   ========================================================================== */
+.contact-section {
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('img/FondoContacto.png');
+    background-color: #333333;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+    .contact-section h2 {
+        font-family: 'Montserrat', sans-serif;
+        margin-bottom: 30px;
+        position: relative;
+        z-index: 2; 
+    }
+
+.contact-form {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2; 
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgba(255, 255, 255, 0.95); 
+    color: #333333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn-submit {
+    background-color: #d1263e;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+    .btn-submit:hover {
+        background-color: #b41c31;
+    }
+/* ==========================================================================
+   8. POP-UPS
+   ========================================================================== */
+.project-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+    .project-modal:target {
+        display: flex !important;
+    }
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.modal-content {
+    position: relative;
+    background-color: #262626;
+    color: #ffffff;
+    width: 90%;
+    max-width: 800px;
+    max-height: 85vh;
+    border-radius: 12px;
+    padding: 3rem 2rem 2rem 2rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2.5rem;
+    color: #ffffff;
+    text-decoration: none;
+    line-height: 1;
+    z-index: 12;
+    transition: color 0.2s ease;
+}
+
+    .modal-close:hover {
+        color: #D1263E;
+    }
+
+.modal-body h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    font-weight: 700;
+    text-align: left;
+}
+
+.modal-img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.modal-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    color: #cccccc;
+    line-height: 1.6;
+}
+
+.modal-content-video {
+    position: relative;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    width: 95%;
+    max-width: 1100px;
+    max-height: 90vh;
+    border-radius: 12px;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-y: auto;
+    z-index: 10;
+    border: 1px solid #333333;
+}
+
+    .modal-content-video .modal-close {
+        top: 1rem;
+        right: 1.5rem;
+        background-color: rgba(0, 0, 0, 0.6);
+        width: 45px;
+        height: 45px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 2rem;
+    }
+
+.youtube-video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; 
+}
+
+    .youtube-video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+.modal-video-info {
+    padding: 2rem;
+    background-color: #1a1a1a;
+}
+
+    .modal-video-info h2 {
+        font-size: 2rem;
+        text-align: left;
+        margin-bottom: 0.5rem;
+    }
+
+.modal-video-subtitle {
+    font-size: 0.9rem;
+    color: #b41c31;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   9. FOOTER
+   ========================================================================== */
+footer {
+    background-color: #D1263E;
+    color: #ffffff;
+    padding: 5px 0;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-socials a {
+    color: #ffffff;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+    .footer-socials a:hover {
+        color: #b41c31;
+    }
+
+@media (min-width: 768px) {
+    .footer-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
