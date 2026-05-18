@@ -9,11 +9,17 @@
     scroll-behavior: smooth;
 }
 
-body {
-    background-color: #333333; 
-    color: #ffffff;
+/* Evita la franja gris lateral de desbordamiento en todos los dispositivos */
+html, body {
+    max-width: 100%;
     overflow-x: hidden;
-    padding-top: 55px; 
+    background-color: #333333;
+    position: relative;
+}
+
+body {
+    color: #ffffff;
+    padding-top: 55px; /* Altura de la navbar para que no tape contenido */
 }
 
 .container {
@@ -41,7 +47,7 @@ h2 {
 }
 
 /* ==========================================================================
-   2. BARRA DE NAVEGACIÓN
+   2. BARRA DE NAVEGACIÓN (LOGO AL 100% DE ALTO Y HOVER ESTABLE)
    ========================================================================== */
 header {
     background-color: #333333;
@@ -50,7 +56,7 @@ header {
     top: 0;
     left: 0;
     z-index: 1000;
-    border-bottom: 2px solid #D1263E;
+    box-shadow: 0 2px 0 0 #D1263E;
 }
 
 .navbar {
@@ -60,25 +66,27 @@ header {
     padding: 0 5%;
     max-width: 1400px;
     margin: 0 auto;
-    min-height: 55px;
     height: 55px;
+    overflow: hidden;
 }
 
 .nav-brand {
     display: flex;
     align-items: center;
-    height: 100%;
+    height: 55px;
     padding: 0;
     margin: 0;
-    text-decoration: none;
-    cursor: pointer;
+    overflow: hidden;
 }
 
 .nav-brand-img {
-    height: 100%;
-    width: auto;
+    height: 100% !important;
+    width: auto !important;
     display: block;
-    object-fit: fill;
+    margin: 0;
+    padding: 0;
+    object-fit: cover;
+    object-position: left center;
 }
 
 .nav-links {
@@ -92,49 +100,34 @@ header {
         text-decoration: none;
         font-size: 0.85rem;
         letter-spacing: 1.5px;
-        font-family: 'Montserrat', sans-serif;
         font-weight: 300;
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transition: color 0.3s ease;
+        transition: color 0.3s ease, text-shadow 0.3s ease;
     }
-
-        .nav-links a::after {
-            content: attr(title);
-            font-weight: 500;
-            height: 0;
-            visibility: hidden;
-            overflow: hidden;
-            user-select: none;
-            pointer-events: none;
-        }
 
         .nav-links a:hover {
             color: #D1263E;
-            font-weight: 500;
+            text-shadow: 0.5px 0 0 #D1263E, -0.5px 0 0 #D1263E, 0 0 1px #D1263E;
         }
 
 /* ==========================================================================
-   3. PORTADA
+   3. PORTADA (HERO)
    ========================================================================== */
 .hero-section {
     width: 100%;
-    height: auto;
-    min-height: calc(100vh - 55px);
+    height: calc(100vh - 55px);
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #333333;
+    overflow: hidden;
     position: relative;
 }
 
 .hero-graphic {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
     display: block;
-    object-fit: contain;
 }
 
 /* ==========================================================================
@@ -143,15 +136,8 @@ header {
 .about-section {
     width: 100%;
     position: relative;
-    clear: both;
-    padding: 5rem 0 2rem 0;
-    background-color: #333333;
+    padding: 5rem 0;
 }
-
-    .about-section p {
-        font-weight: 300;
-        line-height: 1.6;
-    }
 
 .about-container {
     display: flex;
@@ -162,33 +148,31 @@ header {
 
 .about-text {
     flex: 1;
+    z-index: 2;
 }
 
     .about-text h2 {
         text-align: left;
-        margin-bottom: 4rem;
-        font-weight: 700;
+        margin-bottom: 2rem;
     }
 
+.about-section p {
+    font-weight: 300;
+    line-height: 1.6;
+}
+
 .interest-png-container {
-    margin-top: 4rem;
-    margin-bottom: 5rem;
+    margin-top: 3rem;
     display: flex;
     justify-content: flex-start;
 }
 
 .about-interests-img {
-    height: 60px !important;
-    max-height: 60px !important;
-    width: auto !important;
-    display: block;
+    height: 60px;
+    width: auto;
+    max-width: 100%;
     object-fit: contain;
-    transition: opacity 0.3s ease;
 }
-
-    .about-interests-img:hover {
-        opacity: 0.85;
-    }
 
 .about-image-wrapper {
     flex: 1;
@@ -201,10 +185,13 @@ header {
 
 .about-bg-logo {
     position: absolute;
-    width: 380px;
+    width: 600px;
     height: auto;
     opacity: 0.15;
     z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     pointer-events: none;
 }
 
@@ -214,7 +201,6 @@ header {
     border-radius: 50%;
     border: 5px solid #D1263E;
     overflow: hidden;
-    position: relative;
     z-index: 2;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
@@ -226,11 +212,13 @@ header {
     }
 
 /* ==========================================================================
-   5. SECCIÓN PORTFOLIO
+   5. SECCIÓN PORTFOLIO Y POP-UPS (MODALES ENLACES TARGET)
+   ========================================================================== */
+/* ==========================================================================
+   5. SECCIÓN PORTFOLIO Y POP-UPS (PREPARADOS PARA ENLACES DE YOUTUBE)
    ========================================================================== */
 .portfolio-section {
     background-color: #ffffff;
-    width: 100%;
     padding: 4rem 0 0 0;
 }
 
@@ -241,28 +229,19 @@ header {
 }
 
     .portfolio-title-container h2 {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 700;
-        font-size: 2.5rem;
         color: #000000;
-        letter-spacing: 1px;
         text-align: left;
     }
 
 .portfolio-grid-full {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0;
     width: 100%;
 }
 
 a.portfolio-item-full {
     display: block;
-    text-decoration: none;
-    cursor: pointer;
-    color: inherit;
     position: relative;
-    width: 100%;
     height: 350px;
     overflow: hidden;
 }
@@ -271,7 +250,6 @@ a.portfolio-item-full {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
     transition: transform 0.6s ease;
 }
 
@@ -281,74 +259,154 @@ a.portfolio-item-full {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
     display: flex;
     align-items: flex-end;
     padding: 2rem;
-    box-sizing: border-box;
 }
 
 .portfolio-text-full {
     color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
-    width: 100%;
 }
-
-    .portfolio-text-full h3 {
-        font-size: 1.3rem;
-        font-weight: 700;
-        margin: 0 0 0.3rem 0;
-        letter-spacing: 0.5px;
-    }
-
-    .portfolio-text-full p {
-        font-size: 0.95rem;
-        font-weight: 300;
-        margin: 0 0 0.2rem 0;
-        color: #e0e0e0;
-    }
-
-    .portfolio-text-full span {
-        font-size: 0.8rem;
-        font-weight: 300;
-        color: #aaaaaa;
-    }
-
-.btn-view-project {
-    display: inline-block;
-    background-color: #D1263E;
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.85rem;
-    padding: 0.4rem 1.8rem;
-    border-radius: 4px;
-    margin-top: 0.5rem;
-    text-align: center;
-    transition: background-color 0.2s ease;
-}
-
-    .btn-view-project:hover {
-        background-color: #b01e32;
-    }
 
 .portfolio-item-full:hover .portfolio-img-full {
     transform: scale(1.05);
 }
 
+/* ESTILOS DE LOS POP-UPS GENERALES */
+.project-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999; /* Prioridad máxima por encima de la barra de navegación */
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+    .project-modal:target {
+        display: flex;
+    }
+
+.modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9); /* Fondo negro translúcido */
+    z-index: 10;
+}
+
+.modal-content {
+    position: relative;
+    background: #262626; /* Fondo gris oscuro de tu tarjeta */
+    color: #ffffff;
+    width: 90%;
+    max-width: 800px;
+    padding: 2.5rem 2rem 2rem 2rem;
+    border-radius: 12px;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 20; /* Flota de manera forzada sobre el fondo oscuro */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    color: #ffffff;
+    text-decoration: none;
+    z-index: 30; /* El botón de cerrar siempre accesible arriba */
+    transition: color 0.3s;
+}
+
+    .close-modal:hover {
+        color: #D1263E;
+    }
+
+/* CONTENEDOR RESPONSIVO ESPECIAL PARA EL VÍDEO DE YOUTUBE */
+.video-responsive {
+    position: relative;
+    padding-bottom: 56.25%; /* Relación de aspecto 16:9 de YouTube */
+    height: 0;
+    overflow: hidden;
+    margin-top: 1.5rem;
+    border-radius: 6px;
+    z-index: 25;
+}
+
+    .video-responsive iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        z-index: 26;
+    }
+
+/* ESTILOS DE LOS POP-UPS (RESTAURADOS) */
+.project-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+    .project-modal:target {
+        display: flex;
+    }
+
+.modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85); /* Un pelín transparente para ver que hay fondo */
+    z-index: 1; /* Capa trasera */
+}
+
+.modal-content {
+    position: relative;
+    background: #262626; /* Tu gris oscuro de fondo */
+    color: #ffffff;
+    width: 90%;
+    max-width: 800px;
+    padding: 2rem;
+    border-radius: 12px;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 2; /* ¡CLAVE! Se posiciona por encima del fondo negro */
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+    .close-modal:hover {
+        color: #D1263E;
+    }
+
 /* ==========================================================================
-   6. CONOCIMIENTOS
+   6. CONOCIMIENTOS, CONTACTO Y BOTÓN HOVER
    ========================================================================== */
 .skills-section {
     padding: 6rem 0;
     background-color: #1a1a1a;
-    width: 100%;
 }
-
-    .skills-section h2 {
-        text-align: left;
-        margin-bottom: 4rem;
-    }
 
 .skills-grid {
     display: grid;
@@ -358,346 +416,188 @@ a.portfolio-item-full {
 
 .skill-card {
     background-color: #262626;
-    padding: 2rem 1.5rem;
+    padding: 2rem;
     border-radius: 8px;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1.2rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid transparent;
 }
+
+    .skill-card:hover {
+        transform: translateY(-8px);
+        border-color: #D1263E;
+        box-shadow: 0 5px 15px rgba(209, 38, 62, 0.2);
+    }
 
 .skill-img {
     height: 60px;
-    width: auto;
-    object-fit: contain;
-    filter: grayscale(100%) brightness(0.9);
+    margin-bottom: 1rem;
+    filter: grayscale(100%);
     transition: filter 0.3s ease;
 }
 
-.skill-card p {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 0.9rem;
-    color: #cccccc;
-    letter-spacing: 1px;
-    margin: 0;
-    transition: color 0.3s ease;
+.skill-card:hover .skill-img {
+    filter: grayscale(0%);
 }
 
-.skill-card:hover {
-    transform: translateY(-8px);
-    background-color: #2d2d2d;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-    .skill-card:hover .skill-img {
-        filter: grayscale(0%) brightness(1);
-    }
-
-    .skill-card:hover p {
-        color: #ffffff;
-    }
-
-/* ==========================================================================
-   7. CONTACTO
-   ========================================================================== */
+/* SECCIÓN CONTACTO Y BOTÓN */
 .contact-section {
     padding: 100px 0;
-    text-align: center;
-    position: relative;
-    width: 100%;
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-image: url('img/FondoContacto.png');
-    background-color: #333333;
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background: url('img/FondoContacto.png') center/cover no-repeat fixed;
 }
 
-    .contact-section h2 {
-        font-family: 'Montserrat', sans-serif;
-        margin-bottom: 30px;
-        position: relative;
-        z-index: 2; 
-    }
-
 .contact-form {
-    width: 100%;
     max-width: 500px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    padding: 0 20px;
-    position: relative;
-    z-index: 2; 
 }
 
-.form-group input,
-.form-group textarea {
+.form-group input, .form-group textarea {
     width: 100%;
     padding: 12px;
-    font-family: 'Montserrat', sans-serif;
-    background-color: rgba(255, 255, 255, 0.95); 
-    color: #333333;
-    border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
+    border: none;
 }
 
 .btn-submit {
-    background-color: #d1263e;
-    color: #fff;
-    padding: 12px;
+    background-color: #D1263E;
+    color: white;
+    padding: 15px;
     border: none;
-    border-radius: 4px;
-    font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+    /* RESTAURADO: Hover del botón de contacto */
     .btn-submit:hover {
-        background-color: #b41c31;
+        background-color: #b01e32; /* Tono de rojo un poco más oscuro al pasar el ratón */
+        transform: translateY(-2px);
     }
-/* ==========================================================================
-   8. POP-UPS
-   ========================================================================== */
-.project-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 9999;
-    display: none;
-    justify-content: center;
-    align-items: center;
-}
-
-    .project-modal:target {
-        display: flex !important;
-    }
-
-.modal-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
-}
-
-.modal-content {
-    position: relative;
-    background-color: #262626;
-    color: #ffffff;
-    width: 90%;
-    max-width: 800px;
-    max-height: 85vh;
-    border-radius: 12px;
-    padding: 3rem 2rem 2rem 2rem;
-    box-sizing: border-box;
-    overflow-y: auto;
-    z-index: 10;
-}
-
-.modal-close {
-    position: absolute;
-    top: 1rem;
-    right: 1.5rem;
-    font-size: 2.5rem;
-    color: #ffffff;
-    text-decoration: none;
-    line-height: 1;
-    z-index: 12;
-    transition: color 0.2s ease;
-}
-
-    .modal-close:hover {
-        color: #D1263E;
-    }
-
-.modal-body h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: #ffffff;
-    font-weight: 700;
-    text-align: left;
-}
-
-.modal-img {
-    width: 100%;
-    height: auto;
-    border-radius: 6px;
-    margin-bottom: 1.5rem;
-    display: block;
-}
-
-.modal-desc {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-    color: #cccccc;
-    line-height: 1.6;
-}
-
-.modal-content-video {
-    position: relative;
-    background-color: #1a1a1a;
-    color: #ffffff;
-    width: 95%;
-    max-width: 1100px;
-    max-height: 90vh;
-    border-radius: 12px;
-    padding: 0;
-    box-sizing: border-box;
-    overflow-y: auto;
-    z-index: 10;
-    border: 1px solid #333333;
-}
-
-    .modal-content-video .modal-close {
-        top: 1rem;
-        right: 1.5rem;
-        background-color: rgba(0, 0, 0, 0.6);
-        width: 45px;
-        height: 45px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        font-size: 2rem;
-    }
-
-.youtube-video-container {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%; 
-}
-
-    .youtube-video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-
-.modal-video-info {
-    padding: 2rem;
-    background-color: #1a1a1a;
-}
-
-    .modal-video-info h2 {
-        font-size: 2rem;
-        text-align: left;
-        margin-bottom: 0.5rem;
-    }
-
-.modal-video-subtitle {
-    font-size: 0.9rem;
-    color: #b41c31;
-    margin-bottom: 1.5rem;
-    font-weight: 500;
-}
 
 /* ==========================================================================
-   9. FOOTER
+   7. FOOTER (LADO A LADO EN PC)
    ========================================================================== */
 footer {
     background-color: #D1263E;
-    color: #ffffff;
-    padding: 5px 0;
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.9rem;
+    padding: 10px 0;
     width: 100%;
 }
 
 .footer-container {
-    max-width: 1200px;
+    max-width: 1920px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 40px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    gap: 15px;
+    font-size: 0.9rem;
+    font-weight: 400;
 }
 
-.footer-socials a {
-    color: #ffffff;
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
+.footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
 }
 
-    .footer-socials a:hover {
-        color: #b41c31;
+    .footer-socials a {
+        color: #ffffff !important;
+        font-size: 1.6rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: color 0.3s ease, transform 0.3s ease;
     }
 
-@media (min-width: 768px) {
-    .footer-container {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-}
-
-/* ==========================================================================
-   10. RESPONSIVE DESIGN (MEDIA QUERIES)
-   ========================================================================== */
-
-/* Tablet y Móvil Grande (Menos de 1024px) */
-@media (max-width: 1024px) {
-    .portfolio-grid-full {
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas en lugar de 4 */
-    }
-}
-
-/* Móvil y Tablets pequeñas (Menos de 768px) */
-@media (max-width: 768px) {
-
-    /* Navegación */
-    .nav-links {
-        gap: 1rem;
-    }
-
-        .nav-links a {
-            font-size: 0.7rem; /* Texto más pequeño para que quepa */
-            letter-spacing: 0.5px;
+        .footer-socials a img {
+            height: 26px;
+            width: auto;
+            filter: brightness(0) invert(1);
+            transition: filter 0.3s ease;
         }
 
-    /* Sección Sobre Mí */
+        .footer-socials a:hover {
+            color: #333333 !important;
+            transform: translateY(-3px);
+        }
+
+            .footer-socials a:hover img {
+                filter: brightness(0) invert(0.2);
+            }
+
+/* ==========================================================================
+   8. RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================================================== */
+
+/* Tablets (Menos de 1024px) */
+@media (max-width: 1024px) {
+    .portfolio-grid-full {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Móviles Estándar (Menos de 768px) */
+@media (max-width: 768px) {
+
+    /* Navbar móvil */
+    .nav-links {
+        display: none;
+    }
+
+    .navbar {
+        justify-content: flex-start;
+        padding: 0 5%;
+        height: 55px;
+    }
+
+    .nav-brand {
+        height: 55px;
+    }
+
+    .nav-brand-img {
+        height: 100% !important;
+        width: auto !important;
+    }
+
+    /* Portada móvil */
+    .hero-section {
+        height: 70vh;
+    }
+
+    /* Sobre Mí móvil: Apilado vertical pero TEXTOS A LA IZQUIERDA */
     .about-container {
-        flex-direction: column; /* Apila la imagen sobre el texto */
-        text-align: center;
-        gap: 2rem;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        padding: 0 5%;
+        width: 100%;
     }
 
     .about-text h2 {
-        text-align: center;
+        text-align: left;
+        margin-bottom: 2rem;
     }
 
-    .interest-png-container {
-        justify-content: center;
+    .about-text p {
+        text-align: left;
     }
 
     .about-image-wrapper {
-        order: -1; /* Pone la foto arriba del texto en móviles */
+        order: -1;
+        width: 100%;
         min-height: auto;
+        display: flex;
+        justify-content: center;
     }
 
     .about-bg-logo {
-        width: 280px;
+        width: 300px;
+        opacity: 0.1;
     }
 
     .profile-circle {
@@ -705,52 +605,52 @@ footer {
         height: 220px;
     }
 
-    /* Portfolio */
+    .interest-png-container {
+        justify-content: flex-start;
+        margin-bottom: 2rem;
+    }
+
+    .about-interests-img {
+        height: auto !important;
+        max-width: 100%;
+    }
+
+    /* Portfolio móvil */
     .portfolio-grid-full {
-        grid-template-columns: 1fr; /* 1 sola columna para que las fotos se vean bien */
+        grid-template-columns: 1fr;
     }
 
     a.portfolio-item-full {
         height: 300px;
     }
 
-    /* Conocimientos */
+    /* Conocimientos móvil */
     .skills-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas en móvil */
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
+    }
+
+    /* Footer móvil */
+    .footer-container {
+        flex-direction: column-reverse;
+        justify-content: center;
+        text-align: center;
+        gap: 20px;
     }
 }
 
-/* Móviles pequeños (Menos de 480px) */
+/* Móviles muy pequeños (Menos de 480px) */
 @media (max-width: 480px) {
-
     h2 {
         font-size: 1.8rem;
     }
 
-    .nav-links {
-        display: none; /* Opcional: podrías ocultar el menú y usar un icono, 
-                          o dejarlo muy pequeño */
-    }
-
-    /* Si prefieres mantener el menú visible pero muy compacto: */
-    .navbar {
-        padding: 0 2%;
-    }
-
-    .nav-brand-img {
-        height: 40px;
-    }
-
     .contact-form {
-        padding: 0 10px;
+        padding: 0 15px;
     }
 
     .modal-content {
-        padding: 2rem 1rem 1rem 1rem;
-    }
-
-    .modal-body h2 {
-        font-size: 1.5rem;
+        padding: 1rem;
+        width: 95%;
     }
 }
