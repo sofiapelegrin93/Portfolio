@@ -651,3 +651,106 @@ footer {
         justify-content: space-between;
     }
 }
+
+/* ==========================================================================
+   10. RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================================================== */
+
+/* Tablet y Móvil Grande (Menos de 1024px) */
+@media (max-width: 1024px) {
+    .portfolio-grid-full {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en lugar de 4 */
+    }
+}
+
+/* Móvil y Tablets pequeñas (Menos de 768px) */
+@media (max-width: 768px) {
+
+    /* Navegación */
+    .nav-links {
+        gap: 1rem;
+    }
+
+        .nav-links a {
+            font-size: 0.7rem; /* Texto más pequeño para que quepa */
+            letter-spacing: 0.5px;
+        }
+
+    /* Sección Sobre Mí */
+    .about-container {
+        flex-direction: column; /* Apila la imagen sobre el texto */
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .about-text h2 {
+        text-align: center;
+    }
+
+    .interest-png-container {
+        justify-content: center;
+    }
+
+    .about-image-wrapper {
+        order: -1; /* Pone la foto arriba del texto en móviles */
+        min-height: auto;
+    }
+
+    .about-bg-logo {
+        width: 280px;
+    }
+
+    .profile-circle {
+        width: 220px;
+        height: 220px;
+    }
+
+    /* Portfolio */
+    .portfolio-grid-full {
+        grid-template-columns: 1fr; /* 1 sola columna para que las fotos se vean bien */
+    }
+
+    a.portfolio-item-full {
+        height: 300px;
+    }
+
+    /* Conocimientos */
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en móvil */
+        gap: 1.5rem;
+    }
+}
+
+/* Móviles pequeños (Menos de 480px) */
+@media (max-width: 480px) {
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .nav-links {
+        display: none; /* Opcional: podrías ocultar el menú y usar un icono, 
+                          o dejarlo muy pequeño */
+    }
+
+    /* Si prefieres mantener el menú visible pero muy compacto: */
+    .navbar {
+        padding: 0 2%;
+    }
+
+    .nav-brand-img {
+        height: 40px;
+    }
+
+    .contact-form {
+        padding: 0 10px;
+    }
+
+    .modal-content {
+        padding: 2rem 1rem 1rem 1rem;
+    }
+
+    .modal-body h2 {
+        font-size: 1.5rem;
+    }
+}
