@@ -166,10 +166,10 @@ header {
 }
 
 .profile-circle {
-    width: 280px;
-    height: 280px;
+    width: 350px;
+    height: 350px;
     border-radius: 50%;
-    border: 5px solid #D1263E;
+    border: 8px solid #D1263E;
     overflow: hidden;
     z-index: 2;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
