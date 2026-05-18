@@ -47,7 +47,7 @@ h2 {
 }
 
 /* ==========================================================================
-   2. BARRA DE NAVEGACIÓN (LOGO AL 100% DE ALTO Y HOVER ESTABLE)
+   2. BARRA DE NAVEGACIÓN 
    ========================================================================== */
 header {
     background-color: #333333;
@@ -110,7 +110,7 @@ header {
         }
 
 /* ==========================================================================
-   3. PORTADA (HERO)
+   3. PORTADA 
    ========================================================================== */
 .hero-section {
     width: 100%;
@@ -185,9 +185,8 @@ header {
 
 .about-bg-logo {
     position: absolute;
-    width: 600px;
+    width: 450px;
     height: auto;
-    opacity: 0.15;
     z-index: 1;
     top: 50%;
     left: 50%;
